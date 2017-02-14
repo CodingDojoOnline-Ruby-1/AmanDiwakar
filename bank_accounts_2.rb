@@ -1,5 +1,6 @@
 class BankAccount
     puts "Inside BankAccount class"
+    @@number_of_accounts = 0
 
     def initialize
         puts "Intializing!"
@@ -8,19 +9,22 @@ class BankAccount
         check_account_bal()
         @savings_balance = 0
         @checking_balance = 0
-        @deposit_amount = 100
+        
     end
 
     # LIST OF BEHAVIORS
-    def check_account_bal(account_type)
-        if account_type == 1
-            puts "checking"
-        else puts "savings"
-        end
 
+    #breaking down the checking of account balance so its specific to the account type, i.e. checking/savings instead of somehow trying to pass the account type as a parameter
+    def checking_account_bal
+
+        puts "your checking account balance is "
         puts "Checking balance for account type: ",
         checking_account
     end
+
+
+    def savings_account_balance
+
 
     def withdraw_money(amount, account_type)
 
