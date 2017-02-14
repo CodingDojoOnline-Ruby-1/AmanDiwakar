@@ -1,7 +1,13 @@
 module MyEnumerable
   def my_each
     #your code here!
-  end
+    for i in (0..self.length-1)
+        yield i
+
+        end
+    yield self.length-1
+    yield sort
+    end
 end
 class Array
    include MyEnumerable
