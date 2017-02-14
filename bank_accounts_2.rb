@@ -33,6 +33,11 @@ class BankAccount
     def deposit_money(amount, account_type)
         puts "depositing money"
         #run method amans_account.deposit_
+        if account_type == "checking"
+            amount += @checking_balance
+        elsif account_type == "savings"
+            amount += @savings_balance
+        end
 
     end
 
