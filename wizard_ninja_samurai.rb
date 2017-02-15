@@ -7,52 +7,6 @@ class Human
     @health = 100
   end
 
-class Wizard < Human
-    def initialize
-        @strength = 50
-        @intelligence = 24
-    end
-
-    def heal()
-        health += 10
-    end
-
-    def fireball(object)
-        if object.class.ancestors.include?(Human)
-        object.health -= 20
-    end
-
-end
-
-class Ninja < Human
-    def initialize
-        @stealth =  175
-    end
-
-    def steal()
-        @health += 10
-    end
-end
-
-class Samurai < Human
-    def initialize
-        @health = 200
-        @@population = 0
-    end
-
-    def death_blow(object)
-        @health = 0
-    end
-
-    def mediate
-        @health = 200
-    end
-
-    def how_many()
-        puts "there are #{@@population} samurais"
-    end
-end
-
   def attack(obj)
       # check if the attacked object's class is Human or inherits from the Human class
       if obj.class == Human
@@ -68,10 +22,3 @@ end
     end
   end
 end
-
-
-n1 = Ninja.new
-
-s1 = Samurai.new
-
-w1 = Wizard.new
