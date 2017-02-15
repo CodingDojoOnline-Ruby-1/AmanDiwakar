@@ -1,8 +1,9 @@
-require './wizard_ninja_samurai.rb'
+require_relative 'wizard_ninja_samurai'
 class Wizard < Human
-    def initialize
+    def initialize(name)
         @strength = 50
         @intelligence = 24
+        @name = name
     end
 
     def heal()

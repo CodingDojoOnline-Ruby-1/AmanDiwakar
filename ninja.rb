@@ -12,6 +12,7 @@ class Ninja < Human
             true
         else
             false
+            puts "False"
         end
 
     end

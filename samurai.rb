@@ -1,4 +1,4 @@
-require './wizard_ninja_samurai.rb'
+require_relative 'wizard_ninja_samurai'
 
 class Samurai < Human
     def initialize
@@ -7,7 +7,7 @@ class Samurai < Human
     end
 
     def death_blow(object)
-        @health = 0
+        obj.health = 0
     end
 
     def mediate
@@ -19,4 +19,4 @@ class Samurai < Human
     end
 end
 
-s1 = Samura.new
+s1 = Samurai.new
