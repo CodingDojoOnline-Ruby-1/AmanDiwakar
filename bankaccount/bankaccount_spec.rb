@@ -5,9 +5,15 @@ RSpec.describe BankAccount do
     it 'receives the checking account balance' do
         act1 = BankAccount.new
         act1.checking_account_bal
+
+        expect(checking_account_bal).to eq(amount)
     end
 
     it 'retrieves the total account balance' do
+        act2 = BankAccount.new
+        act2.total_balance
+
+        expect(total_balance).to eq(balance)
 
     end
 

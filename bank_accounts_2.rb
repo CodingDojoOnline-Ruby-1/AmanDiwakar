@@ -15,6 +15,10 @@ class BankAccount
     # LIST OF BEHAVIORS
 
     #breaking down the checking of account balance so its specific to the account type, i.e. checking/savings instead of somehow trying to pass the account type as a parameter
+    def total_balance
+        total_balance = @savings_balance + @checking_balance
+    end
+    
     def checking_account_bal
 
         puts "your checking account balance is "
