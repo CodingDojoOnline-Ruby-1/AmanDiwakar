@@ -24,9 +24,15 @@ class BankAccount
 
 
     def savings_account_balance
+        @savings_balance
     end
 
     def withdraw_money(amount, account_type)
+        if account_type = "checking"
+            amount =- @checking_balance
+        elsif account_type = "savings"
+            amount =- @savings_balance
+        end
 
     end
 

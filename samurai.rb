@@ -7,7 +7,7 @@ class Samurai < Human
     end
 
     def death_blow(object)
-        obj.health = 0
+        object.health = 0
     end
 
     def mediate
