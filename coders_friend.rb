@@ -9,4 +9,5 @@ module Coders_Friend
         yield value
     end
 
+
 end

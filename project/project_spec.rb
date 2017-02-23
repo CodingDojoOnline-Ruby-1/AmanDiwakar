@@ -11,4 +11,8 @@ RSpec.describe Project do
         project3.description = ("Test2")
         expect(project3.description).to eq("Test2")
     end
+    it 'has a method elevator_pitch to explain name and description' do
+        project4 = Project.new("Project4", "Cool")
+        expect(project4.elevator_pitch).to eq("Project4", "Cool")
+    end
 end

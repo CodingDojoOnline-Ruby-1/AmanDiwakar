@@ -8,3 +8,4 @@ end
 steph = User.new("Stephen", "Curry")
 
 puts steph
+def
