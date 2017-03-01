@@ -1,0 +1,43 @@
+
+
+<p>Your Gold: <%= @gold%></p>
+<div class='farm'>
+<h2>Farm</h2>
+<form action="/process" method="post">
+<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <input type='hidden' name='location' value='farm'>
+    <input type='submit' value='Find Gold!'>
+</form>
+</div>
+
+
+<div class='cave'>
+<h2>Cave</h2>
+<form action="/process" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <input type='hidden' name='location' value='cave'>
+    <input type='submit' name='cave' value='Find Gold!'>
+</form>
+</div>
+
+<div class='house'>
+<h2>House</h2>
+<form action="/process" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <input type='hidden' name='location' value='house'>
+    <input type='submit' value='Find Gold!'>
+</form>
+</div>
+
+
+<div class='casino'>
+<h2>Casino</h2>
+<form action="/process" method="post">
+<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <input type='hidden' name='location' value='casino'>
+    <input type='submit' value='Find Gold!'>
+</form>
+</div>
+
+
+<%= @message %>
