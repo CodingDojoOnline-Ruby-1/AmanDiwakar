@@ -1,7 +1,7 @@
 class RpgController < ApplicationController
 
   def index
-      puts @gold
+      puts @gold.inspect
   end
   def process_gold
       @location = params[:location]
@@ -32,11 +32,12 @@ class RpgController < ApplicationController
       end
       puts "Processing gold!!"
       puts params[:location]
-
+      redirect_to :root
   end
 
   def farm
       @value = rand 10..20
 
   end
+
 end
