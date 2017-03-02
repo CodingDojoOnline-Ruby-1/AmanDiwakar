@@ -24,9 +24,12 @@ class RpgController < ApplicationController
         elsif
            location == 'casino'
            session[:gold_count] += casino
-           puts '/'*5
-           puts session
-           session[:message] << "you found #{casino} golds at #{location}"
+           if casino < 0
+               session[:message] << "you lost #{casino} golds at #{location}"
+           else
+               session[:message] << "you found #{casino} golds at #{location}"
+           end
+
         end
       else
           session[:gold_count] = 0
