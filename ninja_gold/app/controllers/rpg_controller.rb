@@ -1,6 +1,7 @@
 class RpgController < ApplicationController
 
   def index
+    #   reset_session
       if !session[:gold_count].present?
           session[:gold_count] == 0
       end
