@@ -5,7 +5,7 @@ class RpgController < ApplicationController
       session
   end
   def process_gold
-      session[:message] = []
+      session[:message]
       gold_amount = session[:gold_count]
       if session[:gold_count].nil? == false
           location = params[:location]

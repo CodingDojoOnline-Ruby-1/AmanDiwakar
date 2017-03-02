@@ -40,6 +40,6 @@
 </div>
 
 
-<% session[:message].each do |message|%>
+<% session[:message].last(5).each do |message|%>
 <p><%= message %></p>
 <% end %>
