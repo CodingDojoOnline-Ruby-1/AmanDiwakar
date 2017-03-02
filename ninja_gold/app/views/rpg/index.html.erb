@@ -1,6 +1,6 @@
 
 
-<p>Your Gold: <%= @gold%></p>
+<p>Your Gold: <%= session[:gold_count] %></p>
 <div class='farm'>
 <h2>Farm</h2>
 <form action="/process" method="post">
@@ -40,4 +40,4 @@
 </div>
 
 
-<%= @message %>
+<p><%= session[:message] %></p>
