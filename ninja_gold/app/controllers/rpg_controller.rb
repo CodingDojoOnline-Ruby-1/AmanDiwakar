@@ -1,18 +1,24 @@
 class RpgController < ApplicationController
 
   def index
-      params[:gold_count]
-      session
+      if !session[:gold_count].present?
+          session[:gold_count] == 0
+      end
+
+      if !session[:message].present?
+          session[:message] = []
+      end
+
+
   end
   def process_gold
-      session[:message]
-      gold_amount = session[:gold_count]
+      session[:message].nil? || session[:messsage] == 'Nothing'
+      session[:gold_count].nil? || session[:gold_count] == 0
       if session[:gold_count].nil? == false
           location = params[:location]
         if location == 'farm'
             session[:gold_count] += farm
-            message = "you found #{farm} golds at #{location}"
-            session[:message] << message
+            session[:message] << "you found #{farm} golds at #{location}"
         elsif
             location == 'cave'
             session[:gold_count] += cave
@@ -32,6 +38,7 @@ class RpgController < ApplicationController
 
         end
       else
+          session
           session[:gold_count] = 0
       end
      redirect_to :root
