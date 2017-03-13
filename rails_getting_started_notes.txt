@@ -1,0 +1,173 @@
+RAILS PROJECT 
+
+rails new [project_name]
+start the server: rails server -b 0.0.0.0 or rails s or rails s -b 0.0.0.0
+
+****GEMFILE****
+install a gem: gem 'hirb'  in the gemfile
+
+bundle install
+
+Hirb.enable to enable the gem in rails console
+
+Create a Model:
+
+rails new [project_name]
+cd [project_name]
+
+rails g model [table_name] item_1:string item_2:string email:string password:string age:integer
+
+rake db:migrate -> migrate the migration file to the database, it will create the tables 
+
+data types supported: :binary :boolean :date :datetime :decimal :float :integer :primary_key :string :references :text :time :timestamp
+
+create and save records:
+
+userx = User.new(first_name:"aman",last_name:"diwakar",email:"email@mail.com",age:41)
+userx.save
+
+combine the two steps above:
+
+User.create(first_name:"aman", last_name:"diwakar",email:"email@mail.com",age:41)
+
+Read this data:
+
+users = User.all
+user = User.first <--first record
+user2 = User.second <--second record
+last_user = User.last <--last record
+user = User.find(2) <--retrieve user with id=2
+user = User.find_by(first_name:"user")
+users = User.where(first_name:"user")<--retrieve all users with the first name "user"
+does = User.where(last_name: "Doe").select(:first_name, :last_name) <--retrieve all users with the last name Doe but only selecting the first name and last name column
+
+Update the data:
+
+user = User.find(1)
+user.first_name = "Some other name"
+user.last_name = "Some other last Name"
+user.save
+
+#retrieve the user then update and save multiple attributes
+user = User.last
+user.update(first_name: "First",last_name: "last", age:41)
+
+#Deleting the data
+user = User.first_destroy
+user2 = User.last.delete
+
+
+Validations
+
+class User < ActiveRecord:Base
+	validates :first_name, presence: true, length: { in:2..20}
+	EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
+	validates :email,presence:true,uniqueness: {case_sensitive:false },formst: { with: EMAIL_REGEX }
+end
+
+Check here for more validation information: http://guides.rubyonrails.org/active_record_validations.html
+
+Callbacks
+
+before_save: downcase_email <--#this callback will run before saving on create and update
+after_create: successfully_created <--#this callback will run after creating a new user
+
+create a custom method
+def full_name
+	"#{self.first_name} #{self.last_name}"
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+rails new my_app
+cd my_app
+rails g model User first_name:string last_name:string
+rake db:migrate
+
+Update the User model and add an email column to the users table via a migration
+
+rails g migration AddEmailColumnToUsers email:string
+
+rake db:migrate:status
+
+rake db:migrate to migrate the database and commit the addition to the DB
+
+rollback or revert a migration
+
+rake db:rollback
+
+rake db:migrate:status
+
+Relationships
+
+rails g model Message content:test user:references <--create a user_id column in the database
+
+then we open up the Users table and add a has_one: message or has_many :messages
+
+the "belongs_to :user" will stay the same
+
+Has many through ->student could attend many courses and a course can have many students, we need a signup model to keep track of who is attending which courses
+
+rails g model Student first_name:string last_name:string
+rails g model Course title:string description:text
+rails g model Signup user:references course:references
+
+Through Many
+
+3. Many-To-Many
+A user can attend many events and a event can have many users attending.
+app/models/user.rb ruby class User < ActiveRecord::Base has_one :account has_many :events has_many :attendees has_many :events, through: :attendees end
+app/models/event.rb ruby class Event < ActiveRecord::Base belongs_to :user has_many :attendees has_many :users, through: :attendees end
+
+
+start with the route
+
+config-->routes.rb
+get 'animes' => 'animes#index'
+
+create a controller
+animes_controller.rb
+ 
+class AnimesController < ApplicationController
+	def index
+		
+	end
+end
+
+
+
+app->views->animes folder
+create template index.htm.erb
+
+create a model
+
+go to controller
+
+def index
+	@animes = Anime.all
+end
+
+create a model
+
+rails g model Anime name:string
+rake db:migrate
+
+rails c
+
+Anime.create(name: "Naruto")
+
+view file
+
+<% @anime.each do |a| %>
+<p><%= a.name %></a>
+<% end %>
