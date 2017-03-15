@@ -16,13 +16,13 @@
                 <th>State</th>
                 <th>Actions</th>
             </tr>
+            <% @dojos.each do |d| %>
             <tr>
-                <% @dojos.each do |d| %>
                 <td><%= d.branch %></td>
                 <td><%= d.street %></td>
                 <td><%= d.city %></td>
                 <td><%= d.state %></td>
-                <td><a href="show">show</a> | <a href="edit">edit</a> | <a href="destroy">destroy</a></td>
+                <td><a href="show">show</a> | <a href="edit">edit</a> | <a href="/dojo/:id">destroy</a></td>
                 <% end %>
             </tr>
         </table>
